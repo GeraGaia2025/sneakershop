@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SneakerShop - Projeto Integrador SENAC 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* Navbar */
+    nav {
+      background-color: #1a1a2e;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    nav .logo span {
+      color: #e94560;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul a {
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+
+    nav ul a:hover {
+      color: white;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Hero */
+    .hero {
+      background-color: #1a1a2e;
+      color: white;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 span {
+      color: #e94560;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #bbb;
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+
+    .hero .badges {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .hero .badge {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: #ddd;
+    }
+
+    /* Secoes */
+    .section {
+      padding: 60px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      color: #1a1a2e;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 40px;
+      font-size: 0.95rem;
+    }
+
+    /* Screenshots */
+    .screenshots-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .screenshot-card {
+      background-color: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .screenshot-card .screen-header {
+      background-color: #1a1a2e;
+      padding: 10px 15px;
+      display: flex;
+      gap: 6px;
+    }
+
+    .screenshot-card .screen-header .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #e94560;
+    }
+
+    .screenshot-card .screen-header .dot:nth-child(2) {
+      background-color: #f9a826;
+    }
+
+    .screenshot-card .screen-header .dot:nth-child(3) {
+      background-color: #27ae60;
+    }
+
+    .screenshot-card img {
+      width: 100%;
+      display: block;
+    }
+
+    .screenshot-card .screen-label {
+      padding: 12px 15px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #1a1a2e;
+      border-top: 1px solid #eee;
+    }
+
+    /* Features */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background-color: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      text-align: center;
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .feature-card h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+      color: #1a1a2e;
+    }
+
+    .feature-card p {
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    /* Tech Stack */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .tech-card {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    .tech-card .tech-name {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #1a1a2e;
+      margin-bottom: 5px;
+    }
+
+    .tech-card .tech-desc {
+      font-size: 0.8rem;
+      color: #666;
+    }
+
+    /* Diagrama ER */
+    .er-section {
+      background-color: #1a1a2e;
+      color: white;
+    }
+
+    .er-section .section-title {
+      color: white;
+    }
+
+    .er-section .section-subtitle {
+      color: #999;
+    }
+
+    .er-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      max-width: 1100px;
+      margin: 0 auto 25px;
+    }
+
+    .er-table {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .er-table-header {
+      padding: 10px 15px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .er-table-header.cat { background-color: #27ae60; }
+    .er-table-header.prod { background-color: #e94560; }
+    .er-table-header.cust { background-color: #3498db; }
+    .er-table-header.ord { background-color: #f39c12; color: #333; }
+    .er-table-header.items { background-color: #9b59b6; }
+
+    .er-table-body {
+      padding: 10px 15px;
+    }
+
+    .er-column {
+      font-size: 0.75rem;
+      padding: 3px 0;
+      color: #ccc;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .er-column .col-type {
+      color: #888;
+      font-size: 0.7rem;
+    }
+
+    .er-column .badge-pk {
+      background-color: #f39c12;
+      color: #333;
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-size: 0.6rem;
+      font-weight: bold;
+    }
+
+    .er-column .badge-fk {
+      background-color: #3498db;
+      color: white;
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-size: 0.6rem;
+      font-weight: bold;
+    }
+
+    .er-relations {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .er-relation {
+      background-color: rgba(255, 255, 255, 0.08);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      color: #ccc;
+    }
+
+    /* Equipe */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 25px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .team-card {
+      background-color: white;
+      padding: 30px 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    .team-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #1a1a2e;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+
+    .team-card h3 {
+      font-size: 1rem;
+      color: #1a1a2e;
+      margin-bottom: 4px;
+    }
+
+    .team-card p {
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #1a1a2e;
+      color: #888;
+      text-align: center;
+      padding: 25px 20px;
+      font-size: 0.85rem;
+    }
+
+    footer span {
+      color: #e94560;
+    }
+
+    /* Responsivo */
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 1.8rem; }
+      .hero p { font-size: 1rem; }
+      .section-title { font-size: 1.4rem; }
+      nav ul { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">Sneaker<span>Shop</span></div>
+    <ul>
+      <li><a href="#screenshots">Telas</a></li>
+      <li><a href="#features">Funcionalidades</a></li>
+      <li><a href="#tech">Tecnologias</a></li>
+      <li><a href="#database">Banco de Dados</a></li>
+      <li><a href="#team">Equipe</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Sneaker<span>Shop</span></h1>
+    <p>
+      MVP de um e-commerce de tênis esportivos. Projeto Integrador
+      do 5º semestre — TADS/TSI SENAC 2026.
+    </p>
+    <div class="badges">
+      <span class="badge">React + Vite</span>
+      <span class="badge">Node.js + Express</span>
+      <span class="badge">SQLite</span>
+      <span class="badge">GitHub Pages</span>
+    </div>
+  </section>
+
+  <!-- Screenshots -->
+  <section id="screenshots" class="section">
+    <h2 class="section-title">Telas do Sistema</h2>
+    <p class="section-subtitle">Catálogo de produtos, carrinho de compras e finalização de pedidos</p>
+
+    <div class="screenshots-grid">
+      <!-- Tela 1: Catalogo -->
+      <div class="screenshot-card">
+        <div class="screen-header">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+        <img src="tela-catalogo.png" alt="Tela do catálogo de produtos" />
+        <div class="screen-label">Catálogo de Produtos</div>
+      </div>
+
+      <!-- Tela 2: Carrinho -->
+      <div class="screenshot-card">
+        <div class="screen-header">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+        <img src="tela-carrinho.png" alt="Tela do carrinho de compras" />
+        <div class="screen-label">Carrinho de Compras</div>
+      </div>
+
+      <!-- Tela 3: Checkout -->
+      <div class="screenshot-card">
+        <div class="screen-header">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+        <img src="tela-checkout.png" alt="Tela de finalização do pedido" />
+        <div class="screen-label">Finalização do Pedido</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Funcionalidades -->
+  <section id="features" class="section" style="background-color: white;">
+    <h2 class="section-title">Funcionalidades</h2>
+    <p class="section-subtitle">Principais recursos implementados no MVP</p>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">&#128722;</div>
+        <h3>Catálogo de Produtos</h3>
+        <p>Listagem com filtro por categoria, marca e busca por texto.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#128722;</div>
+        <h3>Carrinho de Compras</h3>
+        <p>Adicionar, remover itens e selecionar tamanho do tênis.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#128179;</div>
+        <h3>Checkout</h3>
+        <p>Formulário de finalização com dados do cliente e endereço.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#128230;</div>
+        <h3>Controle de Estoque</h3>
+        <p>Estoque atualizado automaticamente ao criar pedidos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tecnologias -->
+  <section id="tech" class="section">
+    <h2 class="section-title">Tecnologias Utilizadas</h2>
+    <p class="section-subtitle">Stack do projeto</p>
+
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="tech-name">React + Vite</div>
+        <div class="tech-desc">Frontend SPA</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-name">Express.js</div>
+        <div class="tech-desc">API REST (Backend)</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-name">SQLite</div>
+        <div class="tech-desc">Banco de dados</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-name">GitHub Pages</div>
+        <div class="tech-desc">Landing page</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Diagrama ER -->
+  <section id="database" class="section er-section">
+    <h2 class="section-title">Modelo do Banco de Dados</h2>
+    <p class="section-subtitle">5 tabelas com relacionamentos via chaves estrangeiras</p>
+
+    <div class="er-grid">
+      <!-- categories -->
+      <div class="er-table">
+        <div class="er-table-header cat">categories</div>
+        <div class="er-table-body">
+          <div class="er-column"><span><span class="badge-pk">PK</span> id</span><span class="col-type">INTEGER</span></div>
+          <div class="er-column"><span>name</span><span class="col-type">VARCHAR(100)</span></div>
+          <div class="er-column"><span>slug</span><span class="col-type">VARCHAR(100)</span></div>
+          <div class="er-column"><span>created_at</span><span class="col-type">TIMESTAMP</span></div>
+        </div>
+      </div>
+
+      <!-- products -->
+      <div class="er-table">
+        <div class="er-table-header prod">products</div>
+        <div class="er-table-body">
+          <div class="er-column"><span><span class="badge-pk">PK</span> id</span><span class="col-type">INTEGER</span></div>
+          <div class="er-column"><span>name</span><span class="col-type">VARCHAR(200)</span></div>
+          <div class="er-column"><span>price</span><span class="col-type">DECIMAL</span></div>
+          <div class="er-column"><span><span class="badge-fk">FK</span> category_id</span><span class="col-type">INTEGER</span></div>
+          <div class="er-column"><span>brand</span><span class="col-type">VARCHAR(100)</span></div>
+          <div class="er-column"><span>sizes</span><span class="col-type">VARCHAR(100)</span></div>
+          <div class="er-column"><span>stock</span><span class="col-type">INTEGER</span></div>
+        </div>
+      </div>
+
+      <!-- customers -->
+      <div class="er-table">
+        <div class="er-table-header cust">customers</div>
+        <div class="er-table-body">
+          <div class="er-column"><span><span class="badge-pk">PK</span> id</span><span class="col-type">INTEGER</span></div>
+          <div class="er-column"><span>name</span><span class="col-type">VARCHAR(200)</span></div>
+          <div class="er-column"><span>email</span><span class="col-type">VARCHAR(200)</span></div>
+          <div class="er-column"><span>phone</span><span class="col-type">VARCHAR(20)</span></div>
+          <div class="er-column"><span>address</span><span class="col-type">TEXT</span></div>
+        </div>
+      </div>
+
+      <!-- orders -->
+      <div class="er-table">
+        <div class="er-table-header ord">orders</div>
+        <div class="er-table-body">
+          <div class="er-column"><span><span class="badge-pk">PK</span> id</span><span class="col-type">INTEGER</span></div>
+          <div class="er-column"><span><span class="badge-fk">FK</span> customer_id</span><span class="col-type">INTEGER</span></div>
+          <div class="er-column"><span>status</span><span class="col-type">VARCHAR(20)</span></div>
+          <div class="er-column"><span>total</span><span class="col-type">DECIMAL</span></div>
+          <div class="er-column"><span>shipping_address</span><span class="col-type">TEXT</span></div>
+        </div>
+      </div>
+
+      <!-- order_items -->
+      <div class="er-table">
+        <div class="er-table-header items">order_items</div>
+        <div class="er-table-body">
+          <div class="er-column"><span><span class="badge-pk">PK</span> id</span><span class="col-type">INTEGER</span></div>
+          <div class="er-column"><span><span class="badge-fk">FK</span> order_id</span><span class="col-type">INTEGER</span></div>
+          <div class="er-column"><span><span class="badge-fk">FK</span> product_id</span><span class="col-type">INTEGER</span></div>
+          <div class="er-column"><span>size</span><span class="col-type">VARCHAR(5)</span></div>
+          <div class="er-column"><span>quantity</span><span class="col-type">INTEGER</span></div>
+          <div class="er-column"><span>unit_price</span><span class="col-type">DECIMAL</span></div>
+          <div class="er-column"><span>subtotal</span><span class="col-type">DECIMAL</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Relacionamentos -->
+    <div class="er-relations">
+      <span class="er-relation">categories 1 → N products</span>
+      <span class="er-relation">customers 1 → N orders</span>
+      <span class="er-relation">orders 1 → N order_items</span>
+      <span class="er-relation">products 1 → N order_items</span>
+    </div>
+  </section>
+
+  <!-- Equipe -->
+  <section id="team" class="section" style="background-color: white;">
+    <h2 class="section-title">Equipe</h2>
+    <p class="section-subtitle">Projeto Integrador — 5º semestre TADS/TSI</p>
+
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">A1</div>
+        <h3>Aluno 1</h3>
+        <p>Frontend (React)</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">A2</div>
+        <h3>Aluno 2</h3>
+        <p>Backend (Express)</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">A3</div>
+        <h3>Aluno 3</h3>
+        <p>Banco de Dados (SQL)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p><strong>Sneaker<span>Shop</span></strong> — Projeto Integrador SENAC 2026</p>
+  </footer>
+
+</body>
+</html>
