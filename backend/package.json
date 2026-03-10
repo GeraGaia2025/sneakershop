@@ -1,0 +1,14 @@
+{
+  "name": "sneakershop-backend",
+  "version": "1.0.0",
+  "description": "API REST do SneakerShop - E-commerce de Tenis Esportivos",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "bun src/server.js",
+    "dev": "bun --watch src/server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.0"
+  }
+}
