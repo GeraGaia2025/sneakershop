@@ -21,5 +21,6 @@ O projeto foi dividido em 4 artefatos conforme requisitos do Projeto Integrador:
 ## Equipe
 
 Geraldo Fagner Rodrigues Gaia
+e
 Jadson dos Santos Machado
 
